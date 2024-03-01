@@ -1,0 +1,45 @@
+.slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .mySlides {
+    display: none;
+    animation: fadeIn 1.5s ease-in-out; /* Add fade-in animation */
+  }
+
+  .mySlides img {
+    width: 100%;
+    height: auto;
+    border: 20px solid lightgreen;
+  }
+
+  .indicator-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .indicator.active {
+    background-color: #555;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="arabic"> 
+ <head>
+     
+    <link rel="stylesheet" href="{% static 'booking/style-ar.css' %}">
+    <link rel="stylesheet" href="{% static 'booking/appointment.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="{% static 'booking/script.js' %}" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health clinic</title>
+    <link rel="icon" href="{% static "Images/logo1.jpg" %}" type="image/png">
+    <style>
+      .slideshow-container {
+        max-width: 800px;
+        position: relative;
+        margin: auto;
+        overflow: hidden;
+      }
+  
+      .mySlides {
+        display: none;
+        animation: fadeIn 1.5s ease-in-out; /* Add fade-in animation */
+      }
+  
+      .mySlides img {
+        width: 100%;
+        height: auto;
+        border: 20px solid lightgreen;
+      }
+  
+      .indicator-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+  
+      .indicator {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        margin: 0 5px;
+        background-color: #ddd;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+  
+      .indicator.active {
+        background-color: #555;
+      }
+  
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+    
+ </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Left Side (Location Link) -->
+        <a href="#" class="left-side">Istanbul, Turkey</a>
+
+        <!-- Right Side (Social Media Icons) -->
+        <div class="right-side">
+            <a href="https://www.facebook.com/profile.php?id=100010561665906&locale=tr_TR" class="social-icon"><img src="{% static 'Images/facebookicon.png' %}" alt="Facebook" width="30" height="30"></a>
+            <a href="https://www.instagram.com/sbahi.amer/?hl=en" class="social-icon"><img src="{% static 'Images/instgramicon.png' %}" alt="Instagram" width="30" height="30"></a>
+        </div>
+    </div>
+    <!-- Top Bar Navigation -->
+  <div class="second-div">
+     <!-- Logo on the left side -->
+      <div class="logo">
+          <a href="{% url "index" %}"><img src="{% static "Images/logo1.jpg" %}" alt="Logo" width="100"></a>
+     </div>
+      <a href="{% url "index" %}">Home</a>
+      <a href="{% url 'about_us' %}">About Us</a>
+   </div>
+            <!-- thrid line-->
+         <div class="container">
+            <div class="photo">
+               <img src="{% static 'Images/alt-logo.jpeg' %}" alt="Huge Photo">
+            </div>
+            <div class="text">
+               <h1 class="appear-text">علاج أمن ومريح</h1>
+               <div class="typing-text" style="font-size: 65px;"></div>
+               <a href="{% url "appointments" %}" class="rounded-button"> <h1> إحجز موعدك الأن </h1></a>
+            </div>
+         </div>
+
+         <div class="slideshow-container">
+            <div class="mySlides">
+              <img src="{% static "Images/gr2.jpg" %}" alt="Image 1">
+            </div>
+          
+            <div class="mySlides">
+              <img src="{% static "Images/gar1.jpg" %}" alt="Image 2">
+            </div>
+            <div class="mySlides">
+               <img src="{% static "Images/gr3.jpg" %}" alt="Image 2">
+            </div>
+             <div class="mySlides">
+               <img src="{% static "Images/gr4.jpg" %}" alt="Image 2">
+            </div>
+            <div class="mySlides">
+               <img src="{% static "Images/gr5.jpg" %}" alt="Image 2">
+            </div>
+            <div class="mySlides">
+               <img src="{% static "Images/gr6.jpg" %}" alt="Image 2">
+            </div>
+            <div class="mySlides">
+               <img src="{% static "Images/gr7.jpg" %}" alt="Image 2">
+            </div>
+           
+           
+          
+            <!-- Add more slides as needed -->
+          
+            <div class="indicator-container">
+              <div class="indicator"></div>
+              <div class="indicator"></div>
+              <div class="indicator"></div>
+              <div class="indicator"></div>
+              <div class="indicator"></div>
+              <div class="indicator"></div>
+              <div class="indicator"></div>
+              <!-- Add more indicators as needed -->
+            </div>
+          
+          </div>
+          
+          <script>
+            let slideIndex = 0;
+            showSlides(slideIndex);
+          
+            function showSlides(index) {
+              let i;
+              const slides = document.getElementsByClassName("mySlides");
+              const indicators = document.getElementsByClassName("indicator");
+          
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                indicators[i].classList.remove("active");
+              }
+          
+              slides[index].style.display = "block";
+              indicators[index].classList.add("active");
+          
+              setTimeout(() => {
+                showSlides((index + 1) % slides.length);
+              }, 3000); // Change slide every 2 seconds (adjust as needed)
+            }
+          </script>
+         
+         <div class="bottom-bar">
+            <a href="{% url 'about_us' %}">About Us</a>
+      </div>
+   </body>
+ </html>

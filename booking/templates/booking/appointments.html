@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="arabic"> 
+ <head>
+     
+    <link rel="stylesheet" href="{% static 'booking/style-ar.css' %}">
+    <link rel="stylesheet" href="{% static 'booking/appointment.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health clinic</title>
+    <link rel="icon" href="{% static "Images/logo1.jpg" %}" type="image/png">
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+    // This function will be called when the DOM is fully loaded
+    var button = document.getElementById("button");
+    
+
+
+    button.onclick = function() {
+        // Get the form element
+        var form = document.getElementById("myForm");
+        var datetimeValue = form.elements["datetime_field"].value;
+        var selectedDate = new Date(datetimeValue);
+
+        // Check if the form is valid
+        if (form.checkValidity() && !isNaN(selectedDate) && selectedDate >= new Date()) {
+            // Form is valid, display success alert
+            alert("تم حجز الموعد بنجاح");
+        } else {
+            // Form has errors, display an alert about the errors
+            alert("الرجاء التحقق من جميع الحقول وتصحيح الأخطاء.");
+        }
+    };
+ });
+
+    </script>
+    
+    
+ </head>
+  <body>
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <!-- Left Side (Location Link) -->
+                <a href="#" class="left-side">Istanbul, Turkey</a>
+
+                <!-- Right Side (Social Media Icons) -->
+                <div class="right-side">
+                    <a href="https://www.facebook.com/profile.php?id=100010561665906&locale=tr_TR" class="social-icon"><img src="{% static 'Images/facebookicon.png' %}" alt="Facebook" width="30" height="30"></a>
+                    <a href="https://www.instagram.com/sbahi.amer/?hl=en" class="social-icon"><img src="{% static 'Images/instgramicon.png' %}" alt="Instagram" width="30" height="30"></a>
+                </div>
+            </div>
+            <!-- Top Bar Navigation -->
+        <div class="second-div">
+            <!-- Logo on the left side -->
+            <div class="logo">
+                <a href="{% url "index" %}"><img src="{% static "Images/logo1.jpg" %}" alt="Logo" width="100"></a>
+            </div>
+            <a href="{% url "index" %}">Home</a>
+            <a href="{% url 'about_us' %}">About Us</a>
+        </div>
+
+                <div class="center-form">
+                        <!-- appointments form-->
+                    <form id="myForm" action="{% url "appointments" %}" method="post" class="appointments-form" >
+                        {% csrf_token %}
+                    {% for field in form %}
+
+                        <div class="form-group">
+                        {{ field.label_tag }}
+                    
+                        {{ field }}
+                        {% if field.errors %}
+                            <p class="error">{{ field.errors.as_text }}</p>
+                        {% endif %}
+                        </div>
+                        {% endfor %}
+                        <br>
+                        <!-- Submit Button -->
+                        <button id="button" type="Submit" style="background-color: #04AA2D;">حجز موعد</button>
+                    </form>
+                </div>
+
+                <div class="bottom-bar">
+                    <a href="{% url 'about_us' %}">About Us</a>
+                </div>
+        
+    </body>
+</html>

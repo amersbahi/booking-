@@ -1,0 +1,36 @@
+{% extends "booking/layout.html" %}
+{%load static%}
+
+{% block body%}
+
+<div class="gallery">
+    <a target="_blank" href="img_5terre.jpg">
+      <img src="{% static "Images/ser1.jpg" %}" alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="desc">Add a description of the image here</div>
+  </div>
+  
+  <div class="gallery">
+    <a target="_blank" href="img_forest.jpg">
+      <img src="{% static "Images/Neck.jpg" %}" alt="Forest" width="600" height="400">
+    </a>
+    <div class="desc">Add a description of the image here</div>
+  </div>
+  
+  <div class="gallery">
+    <a target="_blank" href="img_lights.jpg">
+      <img src="{% static "Images/back.jpg" %}" alt="Northern Lights" width="600" height="400">
+    </a>
+    <div class="desc">أكثر أمراض الظهر بسبب العمل الكثير</div>
+  </div>
+  
+  <div class="gallery">
+    <a target="_blank" href="img_mountains.jpg">
+      <img src="{% static "Images/wrist.jpg" %}" alt="Mountains" width="600" height="400">
+    </a>
+    <div class="desc">أبرز أسباب تنميل الذراع واليد  هو مشكلة في المفاصل التي تسبق موقع التنميل الكسور السابقة والاثبات الداخلية.
+       تعرض العصب لخدمات متكررة. الانزلاق في فقرات الرقبة</div>
+  </div>
+  
+
+{% endblock%}
